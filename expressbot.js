@@ -28,6 +28,14 @@ client.on('message', message => {
 	}
 });
 
+function getGuildsNumber() {
+	client.shard.fetchClientValues('guilds.cache.size')
+	.then(results => {
+		bot.user.setStatus('dnd')
+	})
+	.catch(console.error);
+}
+
 client.on('ready', () => {
 	setTimeout(getGuildsNumber, waitingTime)
 	client.setInterval(getGuildsNumber, pingFrequency);

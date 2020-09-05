@@ -1,22 +1,22 @@
 exports.run = (client, message, args, ops) => {
   let fetched = ops.active.get(message.guild.id);
-  if(!fetched) return message.reply("There isn't any music playing in your guild.");
-  if(message.member.voice.channel !== message.guild.me.voice.channel) return message.reply("Sorry, you aren't connected to the same channel");
+  if(!fetched) return message.reply("Non c'è musica nella tua coda.");
+  if(message.member.voice.channel !== message.guild.me.voice.channel) return message.reply("Spiacenti, non sei connesso allo stesso canale");
   
   let userCount = message.member.voice.channel.members.size;
   let required = Math.ceil(userCount/2);
   
   if(!fetched.queue[0].voteSkips) fetched.queue[0].voteSkips = [];
-  if(fetched.queue[0].voteSkips.includes(message.member.id)) return message.reply(`Sorry, you already voted to skip! ${fetched.queue[0].voteSkips.length}/${required} required.`);
+  if(fetched.queue[0].voteSkips.includes(message.member.id)) return message.reply(`Scusa, hai già votato per saltare! ${fetched.queue[0].voteSkips.length}/${required} necessario.`);
   
   fetched.queue[0].voteSkips.push(message.member.id);
   ops.active.set(message.guild.id, fetched);
   
   if(fetched.queue[0].voteSkips.length >= required) {
-    message.channel.send("Successfully skipped song!");
-    return fetched.dispatcher.emit('finish');
+    message.channel.send("Canzone saltata con successo!");
+    return fetched.dispatcher.emit('finire');
   }
   
-  message.channel.send(`Successfully skipped song! ${fetched.queue[0].voteSkips.length}/${required} required`);
+  message.channel.send(`Canzone saltata con successo! ${fetched.queue[0].voteSkips.length}/${required} necessario`);
   
 }

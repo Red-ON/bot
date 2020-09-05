@@ -31,7 +31,7 @@ client.on('message', message => {
 function getGuildsNumber() {
 	client.shard.fetchClientValues('guilds.cache.size')
 	.then(results => {
-		bot.user.setStatus('dnd')
+		bot.user.setStatus('DND')
 	})
 	.catch(console.error);
 }

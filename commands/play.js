@@ -35,7 +35,7 @@ exports.run = async (client, message, args, ops) => {
 }
 
 async function play(client, ops, data) {
-  client.channels.cache.get(data.queue[0].announceChannel).send(`In riproduzione **${data.queue[0].songTitle}** | Richiesto da ${data.queue[0].requester}`);
+  client.channels.cache.get(data.queue[0].announceChannel).send(`In riproduzione **${data.queue[0].songTitle}** | Richiesto da <@${data.queue[0].requester}>`);
   
   data.dispatcher = await data.connection.play(ytdl(data.queue[0].url, { type: 'opus' }));
   data.dispatcher.setVolume(100/100);

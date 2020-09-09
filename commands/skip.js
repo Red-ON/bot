@@ -6,9 +6,6 @@ exports.run = (client, message, args, ops) => {
   let userCount = message.member.voice.channel.members.size;
   let required = Math.ceil(userCount/2);
   
-  if(!fetched.queue[0].voteSkips) fetched.queue[0].voteSkips = [];
-  if(fetched.queue[0].voteSkips.includes(message.member.id)) return message.reply(`Scusa, hai già votato per saltare! ${fetched.queue[0].voteSkips.length}/${required} necessario.`);
-  
   fetched.queue[0].voteSkips.push(message.member.id);
   ops.active.set(message.guild.id, fetched);
   

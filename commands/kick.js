@@ -12,6 +12,6 @@ exports.run = (client, message, args, ops) => {
 	const Discord = require('discord.js');
 	const kickConfirm = new Discord.MessageEmbed()
 	.setColor('#0099ff')
-	.setDescription(`:aprovato:  ${mentionMember} è stato kickato con successo!`);
+	.setDescription(`✔ ${mentionMember} è stato kickato con successo!`);
 	message.channel.send(kickConfirm);
 }

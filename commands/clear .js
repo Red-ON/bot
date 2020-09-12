@@ -6,7 +6,7 @@ exports.run = async (client, message, args, ops) => {
 
     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("Non hai il permesso di eseguire questo comando!");
     
-    await message.channel.messages.fetch({ limit: args[0] }).then(messages => {
+    await message.channel.messages.fetch({ limit: args[99] }).then(messages => {
         message.channel.bulkDelete(messages)
     });
 }

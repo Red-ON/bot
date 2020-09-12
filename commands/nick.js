@@ -12,5 +12,5 @@ exports.run = (client, message, args, ops) => {
 	} catch (error) {
 		message.reply("Non posso cambiare il nickname di questo utente, ha un ruolo più alto? È il creatore del server? Ho il permesso di cambiare il suo nickname?");
 	}
-	message.reply(`:aprovato: Nickname cambiato di ${mentionMember} per **${newNickname}**`);
+	message.reply(`✔ Nickname cambiato di ${mentionMember} per **${newNickname}**`);
 }

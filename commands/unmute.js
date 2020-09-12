@@ -7,7 +7,7 @@ exports.run = (client, message, args, ops) => {
     let muteRole = message.guild.roles.cache.find(r => r.name === "Muto");
     const unmuteConfirm = new Discord.MessageEmbed()
     .setColor('#0099ff')
-    .setDescription(`:aprovato: ${toUnmute.user.username} è stato smutato con successo!`);
+    .setDescription(`✔ ${toUnmute.user.username} è stato smutato con successo!`);
     toUnmute.roles.remove(muteRole.id).then(() => {
         message.delete()
         toUnmute.send(`Sei stato rimutato **${message.guild.name}**`)

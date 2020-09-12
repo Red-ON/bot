@@ -6,5 +6,5 @@ exports.run = (client, message, args, ops) => {
   if(fetched.dispatcher.paused) return message.reply("La musica è già in pausa!");
   
   fetched.dispatcher.pause();
-  message.reply(`Messa in pausa riuscita **${fetched.queue[0].songTitle}**`);
+  message.reply(` ✔ Messa in pausa riuscita **${fetched.queue[0].songTitle}**`);
 }

@@ -11,5 +11,5 @@ exports.run = async (client, message, args, ops) => {
   let vc = client.guilds.cache.get(dispatcher.guildID).me.voice.channel;
   if (vc) vc.leave();
   message.guild.me.voice.channel.leave();
-  message.reply('Abbandonato con successo il canale vocale.');
+  message.reply(' ✔ Abbandonato con successo il canale vocale.');
 }

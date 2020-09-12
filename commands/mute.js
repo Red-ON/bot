@@ -32,7 +32,7 @@ exports.run = async (client, message, args, ops) => {
 	});
 	const muteConfirm = new Discord.MessageEmbed()
 	.setColor('#0099ff')
-	.setDescription(`:aprovato: ${toMute.user.username} è stato mutato con successo!\nReason: __${reason}__`);
+	.setDescription(`✔ ${toMute.user.username} è stato mutato con successo!\nReason: __${reason}__`);
 	toMute.roles.add(muteRole.id).then(() => {
 		message.delete()
 		toMute.send(`Sei stato mutato! **${message.guild.name}** per: **${reason}**`)

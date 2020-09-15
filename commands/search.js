@@ -13,9 +13,9 @@ exports.run = (client, message, args, ops) => {
     }
     
     const musicEmbed = new Discord.MessageEmbed()
-    .setAuthor(":question: Selezione della canzone", message.author.displayAvatarUrl)
+    .setAuthor("Selezione della canzone", message.author.displayAvatarUrl)
     .setDescription(resp)
-    .setFooter(":question: Scegli un numero compreso tra 1 e " + videos.length)
+    .setFooter("Scegli un numero compreso tra 1 e " + videos.length)
     .setColor("RANDOM");
     message.channel.send(musicEmbed);
     

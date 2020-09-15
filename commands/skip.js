@@ -17,6 +17,4 @@ exports.run = (client, message, args, ops) => {
     return fetched.dispatcher.emit('finish');
   }
   
-  message.channel.send(`:white_check_mark: Canzone saltata con successo! ${fetched.queue[0].voteSkips.length}/${required} necessario`);
-  
 }

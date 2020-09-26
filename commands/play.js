@@ -34,6 +34,19 @@ exports.run = async (client, message, args, ops) => {
 
 }
 
+async function play(client, ops, data) {
+  client.channels.cache.get(data.queue[0].announceChannel).send(`:white_check_mark: Ora in produzione **${data.queue[0].songTitle}** | Richiesto da: ${data.queue[0].requester}`);
+  
+  data.dispatcher = await data.connection.play(ytdl(data.queue[0].url, { type: 'opus' }));
+  data.dispatcher.setVolume(100/100);
+  data.dispatcher.guildID = data.guildID;
+  
+  data.dispatcher.once('finish', function() {
+    finish(client, ops, this);
+  });
+  
+}
+
 function finish(client, ops, dispatcher) {
   let fetched = ops.active.get(dispatcher.guildID);
   fetched.queue.shift();

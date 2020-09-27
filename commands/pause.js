@@ -1,10 +1,10 @@
 exports.run = (client, message, args, ops) => {
   let fetched = ops.active.get(message.guild.id);
-  if(!fetched) return message.reply(":x: Non c'è musica nella tua coda.");
-  if(message.member.voice.channel !== message.guild.me.voice.channel) return message.reply(":x: Spiacenti, non sei connesso allo stesso canale");
+  if(!fetched) return message.reply("There isn't any music playing in your guild.");
+  if(message.member.voice.channel !== message.guild.me.voice.channel) return message.reply("Sorry, you aren't connected to the same channel");
   
-  if(fetched.dispatcher.paused) return message.reply(":x: La musica è già in pausa!");
+  if(fetched.dispatcher.paused) return message.reply("Music is already paused!");
   
   fetched.dispatcher.pause();
-  message.reply(`:white_check_mark: Messa in pausa riuscita **${fetched.queue[0].songTitle}**`);
+  message.reply(`Successfully paused **${fetched.queue[0].songTitle}**`);
 }

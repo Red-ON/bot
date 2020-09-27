@@ -2,9 +2,9 @@ const ytdl = require('ytdl-core');
 
 exports.run = async (client, message, args, ops) => {
 
-    if (!message.member.voice.channel) return message.reply(":x: Devi prima essere in un canale vocale!");
+    if (!message.member.voice.channel) return message.reply("You need to be in a voice channel, first!");
 
-    if (!args[0]) return message.reply(":x: Si prega di cercare o inserire un URL seguendo il comando!");
+    if (!args[0]) return message.reply("Please search or input an url following the command!");
 
     let validate = await ytdl.validateURL(args[0]);
     if (!validate) {
@@ -27,7 +27,7 @@ exports.run = async (client, message, args, ops) => {
     });
     if(!data.dispatcher) play(client, ops, data);
     else {
-      message.channel.send(`:white_check_mark: Aggiunto alla coda: **${info.title}** | Richiesto da **<@${message.author.id}>**`);
+      message.channel.send(`Added to queue: **${info.title}** | Requested by **<@${message.author.id}>**`);
     }
     ops.active.set(message.guild.id, data);
     
@@ -35,7 +35,7 @@ exports.run = async (client, message, args, ops) => {
 }
 
 async function play(client, ops, data) {
-  client.channels.cache.get(data.queue[0].announceChannel).send(`:white_check_mark: Ora in produzione **${data.queue[0].songTitle}** | Richiesto da: ${data.queue[0].requester}`);
+  client.channels.cache.get(data.queue[0].announceChannel).send(`Now Playing **${data.queue[0].songTitle}** | Requested by ${data.queue[0].requester}`);
   
   data.dispatcher = await data.connection.play(ytdl(data.queue[0].url, { type: 'opus' }));
   data.dispatcher.setVolume(100/100);
